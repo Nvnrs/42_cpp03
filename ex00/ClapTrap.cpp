@@ -15,13 +15,10 @@ ClapTrap::ClapTrap()
 }
 
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name) 
+	: name(name), hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "Constructor args called\n";
-	this->name = name;
-	this->hitPoints = 10;
-	this->energyPoints = 10;
-	this->attackDamage = 0;
 };
 
 ClapTrap::ClapTrap(const ClapTrap &object)
