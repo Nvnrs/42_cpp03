@@ -2,6 +2,7 @@ CC = g++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = clap_trap_00
 SRCS = main.cpp \
+		ClapTrap.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

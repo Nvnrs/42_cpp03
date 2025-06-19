@@ -1,0 +1,144 @@
+#include "ClapTrap.hpp"
+
+std::ostream& operator<<(std::ostream& os, const ClapTrap&object)
+{
+	os << "Name :" << object.getName() << std::endl;
+	os << "Attack Dammage :" << object.getAttackDammage() << std::endl;
+	os << "Energy points :" << object.getEnergyPoints() << std::endl;
+	os << "Hits points :" << object.getHitPoints() << std::endl;
+	return os;
+}
+
+ClapTrap::ClapTrap()
+{
+	std::cout << "Constructor called\n";
+}
+
+
+ClapTrap::ClapTrap(std::string name)
+{
+	std::cout << "Constructor args called\n";
+	this->name = name;
+	this->hitPoints = 10;
+	this->energyPoints = 10;
+	this->attackDamage = 0;
+};
+
+ClapTrap::ClapTrap(const ClapTrap &object)
+{
+	std::cout << "Copy constructor called\n";
+	*this = object;
+};
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &object)
+{
+	this->name = object.name;
+	this->attackDamage = object.attackDamage;
+	this->hitPoints = object.hitPoints;
+	this->energyPoints = object.energyPoints;
+	return (*this);
+};
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << "Destructor called\n";
+};
+
+const std::string &ClapTrap::getName() const
+{
+	return this->name;
+}
+
+int	ClapTrap::getAttackDammage() const
+{
+	return this->attackDamage;
+}
+
+int	ClapTrap::getHitPoints() const
+{
+	return this->hitPoints;
+}
+
+int	ClapTrap::getEnergyPoints() const
+{
+	return this->energyPoints;
+}
+
+bool ClapTrap::haveEnergy() const
+{
+	return this->energyPoints > 0;
+}
+
+bool	ClapTrap::isDead() const
+{
+	return this->hitPoints <= 0;
+}
+
+bool ClapTrap::checkIsDead() const
+{
+	if (this->isDead())
+	{
+		std::cout << "ClapTrap "
+			<< this->name
+			<< " is dead !"
+			<< std::endl;
+		return true;
+	}
+	return false;
+}
+		
+void ClapTrap::attack(const std::string& target)
+{
+	if (this->checkIsDead())
+		return;
+	if (!this->haveEnergy())
+	{
+		std::cout << "ClapTrap "
+			<< this->name
+			<< " don't have energy!"
+			<< std::endl;
+		return;
+	}
+	std::cout << "ClapTrap "
+		<< this->name
+		<< " attacks "
+		<< target
+		<< " causing, "
+		<< this->attackDamage
+		<< " points of damage !"
+		<< std::endl;
+	this->energyPoints--;
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (this->checkIsDead())
+		return;
+	if (!this->haveEnergy())
+	{
+		std::cout << "don't have energy";
+		return;
+	}
+	std::cout << "ClapTrap "
+		<< this->name
+		<< " repaired itslef for "
+		<< amount
+		<< " points !"
+		<< std::endl;
+	this->hitPoints+= amount;
+	this->energyPoints--;
+}
+
+void ClapTrap::takeDamage(unsigned int amount)
+{
+	if (this->checkIsDead())
+		return;
+	std::cout << "ClapTrap "
+		<< this->name
+		<< " take "
+		<< amount
+		<< " points of damage !"
+		<< std::endl;
+	this->hitPoints -= amount;
+	this->checkIsDead();
+}
