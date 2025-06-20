@@ -4,15 +4,9 @@
 #include <string>
 #include <iostream>
 
-// 	Default Constructor
-// Parameterized Constructor
-// Copy Constructor
-// Assignment Operator
-// Destructor
-
 class ClapTrap {
 	
-	private :
+	protected :
 		std::string name;
 		int	hitPoints;
 		int	energyPoints;
@@ -24,7 +18,7 @@ class ClapTrap {
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &object);
 		ClapTrap &operator=(const ClapTrap &object);
-		~ClapTrap();
+		virtual ~ClapTrap();
 		const std::string &getName() const;
 		int	getAttackDammage() const;
 		int	getHitPoints() const;
@@ -33,7 +27,7 @@ class ClapTrap {
 		bool	isDead() const;
 		bool checkIsDead() const;
 		bool checkHaveEnergy() const;
-		void attack(const std::string& target);
+		virtual void attack(const std::string& target);
 		void beRepaired(unsigned int amount);
 		void takeDamage(unsigned int amount);
 };

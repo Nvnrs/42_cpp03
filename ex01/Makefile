@@ -1,6 +1,6 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = clap_trap_00
+NAME = scav_trap_01
 SRCS = main.cpp \
 		ClapTrap.cpp
 
