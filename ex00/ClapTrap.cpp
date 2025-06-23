@@ -9,7 +9,7 @@ std::ostream& operator<<(std::ostream& os, const ClapTrap&object)
 	return os;
 }
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() :hitPoints(10), energyPoints(10), attackDamage(0)
 {
 	std::cout << "CLAPTRAP Constructor called\n";
 }
