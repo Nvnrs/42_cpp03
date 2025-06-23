@@ -119,7 +119,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return;
 	std::cout << "ClapTrap "
 		<< this->name
-		<< " repaired itslef for "
+		<< " repaired itself for "
 		<< amount
 		<< " points !"
 		<< std::endl;
