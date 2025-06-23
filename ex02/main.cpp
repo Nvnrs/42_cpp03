@@ -1,8 +1,13 @@
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+
+
 
 int	main()
 {
+	// FRAG TRAP
+
 	FragTrap a("AAAAA");
 	FragTrap b("BBBBB");
 
@@ -38,6 +43,12 @@ int	main()
 
 	std::cout << "\n____HIGH FIVES ___\n";
 	c.highFivesGuys();
+
+
+	// SCAVTRAP WORK ALWAYS
+	std::cout << "\n____SCAVTRAP TEST__\n";
+	ScavTrap testA("SCAV A");
+	std::cout << testA;
 
 	std::cout << "\n____DESTRUCTOR ___\n";
 
