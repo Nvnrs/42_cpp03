@@ -18,7 +18,7 @@ class ScavTrap: public ClapTrap {
 			std::cout << "SCAVTRAP Constructor params called\n";
 		};
 
-		ScavTrap(const ScavTrap &object)
+		ScavTrap(const ScavTrap &object) : ClapTrap(object)
 		{
 			std::cout << "SCAVTRAP Constructor copy called \n";
 			*this = object;
@@ -32,7 +32,7 @@ class ScavTrap: public ClapTrap {
 
 		void attack(const std::string &target)
 		{
-			if (this->checkIsDead() || this->checkHaveEnergy())
+			if (this->checkIsDead() || !this->checkHaveEnergy())
 				return;
 			std::cout << "SCAVTRAP "
 				<< this->name
